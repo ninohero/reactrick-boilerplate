@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.header {
+  height: 100px;
+  background: #EEE;
+}
+
+.primary-nav {
+  line-height: 100px;
+  text-align: center;
+}
+
+.primary-nav a {
+  padding: 0 10px;
+  text-decoration: none;
+  color: #61dafb;
+}
+
+.footer {
+  padding: 20px;
+  background: #EEE;
+}
+
+.logo {
+  float: left;
+}
