@@ -1,4 +1,4 @@
-import { TOGGLEROLE, ADDROLE, REMOVEROLE, LOGOUT, LOGIN, USERREINSURER, USERCEDENT } from '../constants';
+import { LOGOUT, LOGIN } from '../constants';
 
 let initialState = {
   token: null,
@@ -12,25 +12,12 @@ let initialState = {
 export default function update(state = initialState, action) {
   var newState = Object.assign({}, state);
 
-  if( action.type === TOGGLEROLE ) {
-    return state;
-
-  } else if( action.type === ADDROLE ) {
-    return state;
-
-  } else if( action.type === REMOVEROLE ) {
-    return state;
-
-  } else if( action.type === LOGOUT ) {
-    return state;
-
-  } else if( action.type === USERREINSURER ) {
-    return state;
-
-  } else if( action.type === USERCEDENT ) {
+  if( action.type === LOGOUT ) {
+    console.log( 'User is logging out' );
     return state;
 
   } else if( action.type === LOGIN ) {
+    console.log( 'User is logging in' );
     return state;
   }
 

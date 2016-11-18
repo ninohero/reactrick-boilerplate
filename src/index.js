@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './scss/index.css';
 
 // React router and redux
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
@@ -30,14 +30,25 @@ const reducer = combineReducers({
 // Creates Redux Development Tools
 const DevTools = createDevTools(
   <DockMonitor toggleVisibilityKey="ctrl-h" changePositionKey="ctrl-q" defaultIsVisible={ false }>
-    <LogMonitor theme="tomorrow" preserveScrollTop={false} />
+    <LogMonitor theme="tomorrow" preserveScrollTop={ false } />
   </DockMonitor>
-)
+);
+
+const getDataMiddleware = store => next => action => {
+  if( typeof action.then !== 'function' ) {
+    return next( action );
+  }
+
+  return Promise.resolve( action ).then( store.dispatch );
+}
 
 // Create Redux Store with our defined reducers
 const store = createStore(
   reducer,
   DevTools.instrument(),
+  applyMiddleware(
+    getDataMiddleware
+  )
 )
 
 // Sync Redux Router with Browser History
