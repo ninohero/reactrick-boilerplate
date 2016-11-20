@@ -1,9 +1,8 @@
 import { LOGOUT, LOGIN } from '../constants'
 
-export function Login( dat ) {
+export function Login( ) {
   return {
-    type: LOGIN,
-    username: data.username
+    type: LOGIN
   }
 }
 
